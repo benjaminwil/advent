@@ -1,4 +1,8 @@
+require_relative "../../advent"
+
 class Depth
+  include Advent
+
   class << self
     def increases(input: input_file)
       count = 0
@@ -22,23 +26,6 @@ class Depth
       end
 
       count
-    end
-
-    private
-
-    def input_file
-      File.open File.join(File.dirname(__FILE__), "input.txt")
-    end
-
-    def read(file)
-      case file.class
-      when Array
-        file
-      when String
-        file.split("\n")
-      else
-        IO.readlines(file).map(&:chomp).reject(&:empty?)
-      end
     end
   end
 end

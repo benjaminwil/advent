@@ -9,12 +9,11 @@ module Advent
     klass.extend ClassMethods
 
     klass.puzzle(current_path)
-    klass.download_input
+    klass.download_input if klass.puzzle?
   end
 
   module ClassMethods
     def download_input
-      return unless [puzzle[:year], puzzle[:day]].all? { |x| x.size > 1 }
       return if File.exist? input_file
 
       url = URI("https://adventofcode.com/#{puzzle[:year]}/day/#{puzzle[:day].to_i}/input")
@@ -33,6 +32,10 @@ module Advent
           parts = current_path.split("/")
           {day: parts[1], year: parts[0]}
         end
+    end
+
+    def puzzle?(hash = puzzle)
+      hash.values.all? { |day_or_year| day_or_year.match? /\d{2,4}/ }
     end
 
     def input_file

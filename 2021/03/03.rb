@@ -1,4 +1,4 @@
-require_relative "../../advent"
+require_relative "../advent"
 
 class Diagnostic
   include Advent
@@ -72,4 +72,5 @@ class Diagnostic
   end
 end
 
-puts Diagnostic.rating
+# puts Diagnostic.consumption
+# puts Diagnostic.rating

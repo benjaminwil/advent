@@ -1,4 +1,4 @@
-require_relative "../../advent"
+require_relative "../advent"
 
 class Depth
   include Advent
@@ -30,5 +30,5 @@ class Depth
   end
 end
 
-puts Depth.increases
-puts Depth.sliding
+# puts Depth.increases
+# puts Depth.sliding

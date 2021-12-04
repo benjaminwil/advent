@@ -1,4 +1,4 @@
-require_relative "../../advent"
+require_relative "../advent"
 
 class Position
   include Advent
@@ -43,5 +43,5 @@ class Position
   end
 end
 
-puts Position.result
-puts Position.result2
+# puts Position.result
+# puts Position.result2

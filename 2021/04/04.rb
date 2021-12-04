@@ -1,4 +1,4 @@
-require_relative "../../advent"
+require_relative "../advent"
 
 class Bingo
   include Advent
@@ -62,5 +62,5 @@ class Bingo
   end
 end
 
-puts Bingo.new.best
-puts Bingo.new.worst
+# puts Bingo.new.best
+# puts Bingo.new.worst

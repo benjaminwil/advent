@@ -16,7 +16,7 @@ module Advent
     def download_input
       return if File.exist? input_file
 
-      url = URI("https://adventofcode.com/#{puzzle[:year]}/day/#{puzzle[:day].to_i}/input")
+      url = URI("https://adventofcode.com/2021/day/#{puzzle.to_i}/input")
       http = ::Net::HTTP.new(url.host, 443)
       http.use_ssl = true
 
@@ -27,24 +27,15 @@ module Advent
     end
 
     def puzzle(current_path = nil)
-      @@puzzle ||=
-        begin
-          parts = current_path.split("/")
-          {day: parts[1], year: parts[0]}
-        end
+      @@puzzle ||= current_path.split("/")[0]
     end
 
-    def puzzle?(hash = puzzle)
-      hash.values.all? { |day_or_year| day_or_year.match? /\d{2,4}/ }
+    def puzzle?(filename_part = puzzle)
+      filename_part.match? /\d{2}/
     end
 
     def input_file
-      File.join(
-        File.dirname(__FILE__),
-        puzzle[:year],
-        puzzle[:day],
-        "input.txt"
-      )
+      File.join(File.dirname(__FILE__), puzzle, "input.txt")
     end
 
     def read(file)
@@ -59,7 +50,7 @@ module Advent
 
     def cookie
       begin
-        IO.readlines(File.open(File.join(File.dirname(__FILE__), ".aoc-cookie")))
+        IO.readlines(File.open(File.join(File.dirname(__FILE__), "..", ".aoc-cookie")))
           .map(&:chomp)
           .reject(&:empty?)
           .first

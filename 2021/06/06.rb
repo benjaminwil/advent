@@ -34,5 +34,5 @@ class Lanternfish
   end
 end
 
-puts Lanternfish.new.population(days: 80)
-puts Lanternfish.new.population(days: 256)
+# puts Lanternfish.new.population(days: 80)
+# puts Lanternfish.new.population(days: 256)
